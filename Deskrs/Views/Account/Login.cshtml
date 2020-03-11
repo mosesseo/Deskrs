@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<div>
+    <form>
+        <input type="text" name="UserName" />
+        <input type="text" name="Password" />
+        <a href="#" id="login-btn">login</a>
+    </form>
+</div>
+
+@section Scripts
+{
+
+    <script>
+        $("#login-btn").click(function () {
+            var userName = $("input[name=UserName]").val();
+            var password = $("input[name=Password]").val();
+            $.post("/Account/Login", {UserName: userName, Password: password}, function (data) {
+                location.href = "/";
+            });
+            return false;
+        });
+
+    </script>
+
+}
